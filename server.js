@@ -2,7 +2,8 @@ const express = require('express');
 const fs = require("fs")
 const db = require("./db/db.json")
 const path = require('path');
-const uniqid = require('uniqid')
+const uniqid = require('uniqid');
+const { getDefaultSettings } = require('http2');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -20,10 +21,17 @@ app.get('/api/notes', (req, res) => res.sendFile(path.join(__dirname, './db/db.j
 app.post('/api/notes', (req, res) => {
     const notes = JSON.parse(fs.readFileSync("./db/db.json"))
     const newNotes = req.body;
-    notes.id = uniqid();
+    newNotes.id = uniqid();
     notes.push(newNotes);
     fs.writeFileSync("./db/db.json", JSON.stringify(notes))
     res.json(notes);
+});
+
+app.delete('/api/notes/:id', (req, res) => {
+    const notes = JSON.parse(fs.readFileSync("./db/db.json"))
+    const delNotes = notes.filter((delNote) => delNote.id !== req.params.id);
+    fs.writeFileSync("./db/db.json", JSON.stringify(delNotes));
+    res.json(delNotes);
 });
 
 app.use(router)
