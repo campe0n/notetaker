@@ -1,6 +1,6 @@
 # Note Taker
 
-![GitHub license](https://img.shields.io/badge/license-MIT-brightgreen.svg)
+![GitHub license](https://img.shields.io/badge/license-MIT-turquoise.svg)
 
 # Screenshot
 
