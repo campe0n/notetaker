@@ -2,8 +2,6 @@
 
 ![GitHub license](https://img.shields.io/badge/license-MIT-turquoise.svg)
 
-# Screenshot
-
 ![Portfolio Screenshot](./public/assets/images/ss.PNG)
 
 # Description
